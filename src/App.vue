@@ -29,7 +29,7 @@
       color="amber"
       app
     >
-      <span class="white--text">DEVENV by arrase</span>
+      <span class="white--text">MULTI-REPO MANAGER</span>
     </v-footer>
   </v-app>
 </template>
