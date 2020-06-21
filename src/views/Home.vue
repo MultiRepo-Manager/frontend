@@ -1,12 +1,23 @@
 <template>
-  <v-expansion-panels>
-    <v-expansion-panel v-for="repo in repos" :key="repo.repo_key">
-      <v-expansion-panel-header>{{ repo.repo_key }}</v-expansion-panel-header>
-      <v-expansion-panel-content>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </v-expansion-panel-content>
-    </v-expansion-panel>
-  </v-expansion-panels>
+<div>
+  <v-card
+    class="mx-auto"
+    v-for="repo in repos" :key="repo.repo_key"
+  >
+      <v-row fluid>
+        <v-col cols="12">
+          <v-card>
+            <v-card-title class="headline">{{ repo.repo_key }}</v-card-title>
+            <v-card-subtitle>{{ repo.href }}</v-card-subtitle>
+            <v-card-actions>
+              <v-btn text>Delete</v-btn>
+              <v-btn text>Sync</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+  </v-card>
+  </div>
 </template>
 
 <script>
