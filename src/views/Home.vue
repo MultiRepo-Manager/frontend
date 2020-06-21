@@ -18,7 +18,10 @@
       repos: function() {
         var rps = []
         if (this.$store.state.workspace.config.repos) {
-          this.$store.state.workspace.config.repos.forEach(element => rps.push(GitUrlParse(element)));
+            for (var [key, value] of Object.entries(this.$store.state.workspace.config.repos)) {
+              console.log(key)
+              rps.push(GitUrlParse(value.git))
+            }
         }
         return rps
       },
