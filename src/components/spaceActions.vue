@@ -16,13 +16,13 @@
           <v-container>
             <v-row>
               <v-col cols="12">
-                <v-text-field label="Url*" required></v-text-field>
+                <v-text-field v-model="add_url" label="Url*" required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field label="Name*" required></v-text-field>
+                <v-text-field v-model="add_name" label="Name*" required></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field label="Branch*" required></v-text-field>
+                <v-text-field v-model="add_branch" label="Branch*" required></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -44,6 +44,9 @@
     name: 'spaceActions',
     data: () => ({
       dialog: false,
+      add_url: "",
+      add_branch: "",
+      add_name: ""
     }),
     methods: {
       sync_all: function () {
