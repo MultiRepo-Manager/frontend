@@ -11,7 +11,6 @@
             <v-card-subtitle>{{ repo.href }}</v-card-subtitle>
             <v-card-actions>
               <v-btn text>Delete</v-btn>
-              <v-btn text>Sync</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
