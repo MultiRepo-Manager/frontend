@@ -55,6 +55,9 @@
       git_add: function () {
            this.dialog = false
            this.$socket.sendObj({ "topic": "git-add", "payload": {"name": this.add_name, "git": this.add_url, "branch": this.add_branch}})
+           this.add_name = ""
+           this.add_url = ""
+           this.add_branch = ""
          }
     }
   }
