@@ -5,9 +5,10 @@
       clipped-left
       color="amber"
     >
+      <wsStatus/>
       <span class="title ml-3 mr-5">{{ project }}</span>
       <v-spacer></v-spacer>
-      <wsStatus/>
+      <spaceActions/>
     </v-app-bar>
     <v-content>
      <v-container fluid>
@@ -25,6 +26,7 @@
 
 <script>
   import wsStatus from './components/wsStatus';
+  import spaceActions from './components/spaceActions';
 
   export default {
     props: {
@@ -32,6 +34,7 @@
     },
     components: {
       wsStatus,
+      spaceActions
     },
     computed: {
       project: function() {
