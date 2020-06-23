@@ -30,7 +30,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" text @click="dialog_cancel">Close</v-btn>
           <v-btn color="blue darken-1" text @click="git_add">Save</v-btn>
         </v-card-actions>
       </v-card>
@@ -55,6 +55,12 @@
       git_add: function () {
            this.dialog = false
            this.$socket.sendObj({ "topic": "git-add", "payload": {"name": this.add_name, "git": this.add_url, "branch": this.add_branch}})
+           this.add_name = ""
+           this.add_url = ""
+           this.add_branch = ""
+         },
+      dialog_cancel: function () {
+           this.dialog = false
            this.add_name = ""
            this.add_url = ""
            this.add_branch = ""
