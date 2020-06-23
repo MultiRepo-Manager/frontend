@@ -10,7 +10,7 @@
             <v-card-title class="headline">{{ repo.repo_key }}</v-card-title>
             <v-card-subtitle>{{ repo.href }}</v-card-subtitle>
             <v-card-actions>
-              <v-btn text>Delete</v-btn>
+              <v-btn @click="del_repo(repo.repo_key)" text>Delete</v-btn>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -36,6 +36,12 @@
         }
         return rps
       },
+    },
+    methods: {
+      del_repo: function (name) {
+            this.$socket.sendObj({ "topic": "git-del", "payload": {"name": name}})
+            console.log("DEl repo " + name)
+          },
     }
   }
 </script>
