@@ -1,33 +1,16 @@
 <template>
-<div>
-  <v-card
-    class="mx-auto"
-    v-for="repo in repos" :key="repo.repo_key"
-  >
-      <v-row fluid>
-        <v-col cols="12">
-          <v-card>
-            <v-card-title class="headline">{{ repo.repo_key }}</v-card-title>
-            <v-card-subtitle>{{ repo.href }}</v-card-subtitle>
-            <v-card-actions>
-              <v-dialog v-model="dialog" persistent max-width="240px">
-                <template v-slot:activator="{ on, attrs }">
-                  <v-btn v-bind="attrs" v-on="on" @click="dialog = true" text>Delete</v-btn>
-                </template>
-                <v-card>
-                  <v-card-title><span>Delete repo</span></v-card-title>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn text @click="dialog = false">Cancel</v-btn>
-                    <v-btn text @click="del_repo(repo.repo_key)">Delete</v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-dialog>
-            </v-card-actions>
-          </v-card>
-        </v-col>
-      </v-row>
-  </v-card>
+  <div>
+    <v-card
+      class="mx-auto"
+      v-for="repo in repos"
+      :key="repo.repo_key"
+      >
+      <v-card-title class="headline">{{ repo.repo_key }}</v-card-title>
+      <v-card-subtitle>{{ repo.href }}</v-card-subtitle>
+      <v-card-actions>
+        <v-btn @click="delrepo(repo.repo_key)" icon ><v-icon>mdi-delete</v-icon></v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
@@ -36,9 +19,6 @@
 
   export default {
     name: 'Home',
-    data: () => ({
-      dialog: false
-        }),
     computed: {
       repos: function() {
         var rps = []
@@ -53,9 +33,21 @@
       },
     },
     methods: {
-      del_repo: function (name) {
-            this.$socket.sendObj({ "topic": "git-del", "payload": {"name": name}})
-            console.log("DEl repo " + name)
+      delrepo: function (name) {
+            const sck = this.$socket;
+            const options = {
+              html: true,
+              okText: 'Delete',
+              cancelText: 'Cancel',
+            };
+            this.$dialog
+              .confirm('Confirm delete: <b>' + name + '</b>', options)
+              .then(function() {
+                  sck.sendObj({ "topic": "git-del", "payload": {"name": name}})
+                })
+              .catch(function() {
+                  console.log('Clicked on cancel');
+                });
           },
     }
   }

@@ -4,8 +4,12 @@ import vuetify from './plugins/vuetify';
 import router from './router'
 import VueNativeSock from 'vue-native-websocket'
 import store from './store'
+import VuejsDialog from 'vuejs-dialog';
+import 'vuejs-dialog/dist/vuejs-dialog.min.css';
 
 Vue.config.productionTip = false
+
+Vue.use(VuejsDialog, { animation: 'fade' });
 
 Vue.use(VueNativeSock, 'ws://localhost:8080/ws', {
   reconnection: true,

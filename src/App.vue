@@ -1,20 +1,20 @@
 <template>
   <v-app>
+    <navBar/>
     <v-app-bar
       app
       clipped-left
       color="amber"
     >
-      <wsStatus/>
       <span class="title ml-3 mr-5">{{ project }}</span>
       <v-spacer></v-spacer>
-      <spaceActions/>
+      <wsStatus/>
     </v-app-bar>
-    <v-content>
+    <v-main>
      <v-container fluid>
        <router-view/>
      </v-container>
-    </v-content>
+    </v-main>
     <v-footer
       color="amber"
       app
@@ -26,15 +26,12 @@
 
 <script>
   import wsStatus from './components/wsStatus';
-  import spaceActions from './components/spaceActions';
+  import navBar from './components/navBar';
 
   export default {
-    props: {
-      source: String,
-    },
     components: {
       wsStatus,
-      spaceActions
+      navBar,
     },
     computed: {
       project: function() {
