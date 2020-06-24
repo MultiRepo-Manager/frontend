@@ -10,7 +10,19 @@
             <v-card-title class="headline">{{ repo.repo_key }}</v-card-title>
             <v-card-subtitle>{{ repo.href }}</v-card-subtitle>
             <v-card-actions>
-              <v-btn @click="del_repo(repo.repo_key)" text>Delete</v-btn>
+              <v-dialog v-model="dialog" persistent max-width="240px">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn v-bind="attrs" v-on="on" @click="dialog = true" text>Delete</v-btn>
+                </template>
+                <v-card>
+                  <v-card-title><span>Delete repo</span></v-card-title>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn text @click="dialog = false">Cancel</v-btn>
+                    <v-btn text @click="del_repo(repo.repo_key)">Delete</v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -24,6 +36,9 @@
 
   export default {
     name: 'Home',
+    data: () => ({
+      dialog: false
+        }),
     computed: {
       repos: function() {
         var rps = []

@@ -30,8 +30,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog_cancel">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="git_add">Save</v-btn>
+          <v-btn text @click="dialog_cancel">Close</v-btn>
+          <v-btn text @click="git_add">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
