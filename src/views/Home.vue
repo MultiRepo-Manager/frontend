@@ -8,19 +8,6 @@
       <v-card-title class="headline">{{ repo.repo_key }}</v-card-title>
       <v-card-subtitle>{{ repo.href }}</v-card-subtitle>
       <v-card-actions>
-        <v-btn @click="delrepo(repo.repo_key)" icon >
-          <v-tooltip top>
-            <template v-slot:activator="{ on, attrs }">
-              <v-icon
-                v-bind="attrs"
-                v-on="on"
-                >
-                mdi-delete
-              </v-icon>
-            </template>
-            <span>Delete</span>
-          </v-tooltip>
-        </v-btn>
         <v-btn @click="build(repo.repo_key)" icon >
           <v-tooltip top>
             <template v-slot:activator="{ on, attrs }">
@@ -32,6 +19,19 @@
               </v-icon>
             </template>
             <span>Build</span>
+          </v-tooltip>
+        </v-btn>
+        <v-btn @click="delrepo(repo.repo_key)" icon >
+          <v-tooltip top>
+            <template v-slot:activator="{ on, attrs }">
+              <v-icon
+                v-bind="attrs"
+                v-on="on"
+                >
+                mdi-delete
+              </v-icon>
+            </template>
+            <span>Delete</span>
           </v-tooltip>
         </v-btn>
       </v-card-actions>
