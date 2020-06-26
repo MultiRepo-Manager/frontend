@@ -12,9 +12,10 @@ import Toasted from 'vue-toasted';
 Vue.config.productionTip = false
 
 Vue.use(Toasted, {
-  theme: "toasted-primary", 
   position: "top-right", 
-  duration : 5000
+  duration : 5000,
+  type: "info",
+  closeOnSwipe: true
 });
 
 Vue.use(VuejsDialog, { animation: 'fade' });
