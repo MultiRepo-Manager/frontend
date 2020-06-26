@@ -6,8 +6,16 @@ import VueNativeSock from 'vue-native-websocket'
 import store from './store'
 import VuejsDialog from 'vuejs-dialog';
 import 'vuejs-dialog/dist/vuejs-dialog.min.css';
+import Toasted from 'vue-toasted';
+
 
 Vue.config.productionTip = false
+
+Vue.use(Toasted, {
+  theme: "toasted-primary", 
+  position: "top-right", 
+  duration : 5000
+});
 
 Vue.use(VuejsDialog, { animation: 'fade' });
 

@@ -33,7 +33,16 @@ export default new Vuex.Store({
       switch(message.topic) {
         case "config-set":
           state.workspace.config = message.payload
+          Vue.toasted.show('Config loaded');
           break;
+        case "git-added":
+          Vue.toasted.show('Repository added');
+          break;
+        case "git-deleted":
+          Vue.toasted.show('Repository deleted');
+          break;
+        default:
+          Vue.toasted.show('Done!');
       }
       console.log(state, message.topic, message.payload)
     },
